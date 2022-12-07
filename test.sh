@@ -53,6 +53,6 @@ go run . --output=test011.txt "abcDEF 123" standard
 
 end_time="$(date -u +%s.%N)"
 echo "Tests finished!"
-elapsed="$(bc <<<"$end_time-$start_time")"
+elapsed="$(awk "BEGIN { print $end_time - $start_time }")"
 echo "Total of $elapsed seconds elapsed for processing"
 

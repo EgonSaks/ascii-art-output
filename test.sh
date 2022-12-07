@@ -1,3 +1,5 @@
+start_time="$(date -u +%s.%N)"
+echo "Starting tests..."
 go run . --output=banner.txt "hello" standard
 # cat -e banner.txt
 
@@ -18,7 +20,7 @@ go run . --output=test02.txt "123 -> #$%" standard
 
 go run . --output=test03.txt "432 -> #$%&@" shadow
 # cat test03.txt
-
+echo "testing..."
 go run .  --output=test04.txt "There" shadow
 # cat test04.txt
 
@@ -49,5 +51,8 @@ go run . --output=test011.txt "abcDEF 123" standard
 # go run . --output=test011.txt "abcDEF 123" randomFont
 # could not read the content in the file: open : no such file or directory
 
-
+end_time="$(date -u +%s.%N)"
+echo "Tests finished!"
+elapsed="$(bc <<<"$end_time-$start_time")"
+echo "Total of $elapsed seconds elapsed for processing"
 
